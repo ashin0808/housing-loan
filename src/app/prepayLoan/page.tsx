@@ -74,7 +74,7 @@ export default function PrepayLoan() {
       remainTotalLoanAmount: "759511.07",
       interestRate: "3.0",
       loanMaturityDate: ["2051", "7"],
-      repaymentAmount: "100000",
+      repaymentAmount: "50000",
       adjustmentPlan: "reduceMonthlyPayment",
     },
   });

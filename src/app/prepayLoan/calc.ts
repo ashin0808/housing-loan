@@ -62,7 +62,7 @@ export function calcFun(form: z.infer<typeof formSchema>) {
   diffEqualInstallment.totalPayment = Number((diffEqualInstallment.totalPayment / 10000).toFixed(2));
   diffEqualInstallment.loanAmount = Number((diffEqualInstallment.loanAmount / 10000).toFixed(2));
   diffEqualInstallment.totalInterest = Number((diffEqualInstallment.totalInterest / 10000).toFixed(2));
-  diffEqualPrincipal.monthlyPayment = Number((diffEqualPrincipal.monthlyPayment).toFixed(2));
+  diffEqualInstallment.monthlyPayment = Number((diffEqualInstallment.monthlyPayment).toFixed(2));
   diffEqualPrincipal.totalPayment = Number((diffEqualPrincipal.totalPayment / 10000).toFixed(2));
   diffEqualPrincipal.loanAmount = Number((diffEqualPrincipal.loanAmount / 10000).toFixed(2));
   diffEqualPrincipal.totalInterest = Number((diffEqualPrincipal.totalInterest / 10000).toFixed(2));
