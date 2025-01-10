@@ -26,7 +26,7 @@ export default function Home() {
   }
 
   return (
-    <div className="w-screen ">
+    <div className="w-screen">
       <Calculate onCalculate={handleCalculatee} />
       {result && (
         <Drawer open={!!result} onClose={() => setResult(undefined)}>

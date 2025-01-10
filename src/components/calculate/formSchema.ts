@@ -5,15 +5,17 @@ export default z
     category: z.enum(["accumulation", "commerce", "combination"], {
       message: "请选择一个贷款类别",
     }),
-    totalLoanAmount: z.string().refine((value) => {
-      const numberValue = Number(value);
-      return (
-        !isNaN(numberValue) && numberValue > 0
-      )
-    },
+    totalLoanAmount: z.string().refine(
+      (value) => {
+        const numberValue = Number(value);
+        return (
+          !isNaN(numberValue) && numberValue > 0
+        )
+      },
       {
         message: "贷款总额必须大于0",
-      }),
+      }
+    ),
     accumulationAmount: z.string().optional(),
     commerceAmount: z.string().optional(),
     combinationAccumulationAmount: z.string().optional(),

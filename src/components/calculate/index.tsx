@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import formSchema from "./formSchema";
 import { calcFun } from "./calc";
 import { ICalcResult } from "./types";
+import { useRouter } from "next/navigation";
 
 export function Calculate({
   className,
@@ -47,6 +48,7 @@ export function Calculate({
       interestRate: "3.55",
     },
   });
+  const router = useRouter();
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
@@ -57,7 +59,7 @@ export function Calculate({
   }
 
   return (
-    <div className={cn("mx-2", className)} {...props}>
+    <div className={cn("mx-2 mt-2", className)} {...props}>
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">房贷计算器</CardTitle>
@@ -67,7 +69,7 @@ export function Calculate({
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
                 control={form.control}
                 name="category"
@@ -168,7 +170,7 @@ export function Calculate({
                   <FormItem>
                     <FormLabel>按揭年数</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="Enter the mortgage term" />
+                      <Input {...field} placeholder="请输入按揭年数" />
                     </FormControl>
                     <FormDescription>请输入按揭年数</FormDescription>
                     <FormMessage />
@@ -182,7 +184,7 @@ export function Calculate({
                   <FormItem>
                     <FormLabel>利率(%)</FormLabel>
                     <FormControl>
-                      <Input {...field} placeholder="Enter the interest rate" />
+                      <Input {...field} placeholder="请输入利率(%)" />
                     </FormControl>
                     <FormDescription>请输入利率(%)</FormDescription>
                     <FormMessage />
@@ -190,6 +192,13 @@ export function Calculate({
                 )}
               />
               <Button type="submit">开始计算</Button>
+              <Button
+                variant="link"
+                type="button"
+                onClick={() => router.push("/prepayLoan")}
+              >
+                提前还贷？
+              </Button>
             </form>
           </Form>
         </CardContent>

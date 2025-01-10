@@ -6,15 +6,15 @@ import type { ICalcResult, IPayment } from "./types";
  * 计算等额本息的每月还款额和总利息
  * @param loanAmount 贷款总额（元）
  * @param annualInterestRate 年利率（例如 5% 输入 0.05）
- * @param loanTermYears 贷款期限（年）
+ * @param loanTermMonths 贷款期限（月）
  */
-function calculateEqualInstallment(
+export function calculateEqualInstallment(
   loanAmount: number,
   annualInterestRate: number,
-  loanTermYears: number
+  loanTermMonths: number
 ): ICalcResult {
   const monthlyInterestRate = annualInterestRate / 12; // 月利率
-  const loanTermMonths = loanTermYears * 12; // 贷款期限（月数）
+  const loanTermYears = loanTermMonths / 12; // 贷款期限（年）
 
   // 计算每月还款额
   const monthlyPayment =
@@ -59,15 +59,15 @@ function calculateEqualInstallment(
  * 计算等额本金的每月还款额和总利息
  * @param loanAmount 贷款总额（元）
  * @param annualInterestRate 年利率（例如 5% 输入 0.05）
- * @param loanTermYears 贷款期限（年）
+ * @param loanTermMonths 贷款期限（月）
  */
-function calculateEqualPrincipal(
+export function calculateEqualPrincipal(
   loanAmount: number,
   annualInterestRate: number,
-  loanTermYears: number
+  loanTermMonths: number
 ): ICalcResult {
   const monthlyInterestRate = annualInterestRate / 12; // 月利率
-  const loanTermMonths = loanTermYears * 12; // 贷款期限（月数）
+  const loanTermYears = loanTermMonths / 12; // 贷款期限（年）
   const monthlyPrincipal = loanAmount / loanTermMonths; // 每月本金
 
   let remainingLoan = loanAmount; // 剩余贷款
@@ -109,8 +109,8 @@ function calculateEqualPrincipal(
 
 export function calcFun(form: z.infer<typeof formSchema>) {
   const totalLoanAmount = Number(form.totalLoanAmount) * 10000;
-  const mortgageTerm = Number(form.mortgageTerm);
   const interestRate = Number(form.interestRate) / 100;
+  const mortgageTerm = Number(form.mortgageTerm) * 12;
   if (form.category === "accumulation" || form.category === "commerce") {
     const equalInstallment = calculateEqualInstallment(
       totalLoanAmount,
