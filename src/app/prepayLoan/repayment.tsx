@@ -62,7 +62,9 @@ export function Repayment({ className, result, ...props }: RepaymentProps) {
               <h4>
                 总还款额降低
                 <span className="text-red-400">
-                  {result.diffEqualInstallment.totalPayment}
+                  {result.diffEqualInstallment.totalPayment}=
+                  {result.diffEqualInstallment.totalInterest}+
+                  {result.diffEqualInstallment.loanAmount}
                 </span>
                 万
               </h4>
@@ -168,7 +170,9 @@ export function Repayment({ className, result, ...props }: RepaymentProps) {
               <h4>
                 总还款额降低
                 <span className="text-red-400">
-                  {result.diffEqualPrincipal.totalPayment}
+                  {result.diffEqualPrincipal.totalPayment}=
+                  {result.diffEqualPrincipal.totalInterest}+
+                  {result.diffEqualPrincipal.loanAmount}
                 </span>
                 万
               </h4>
